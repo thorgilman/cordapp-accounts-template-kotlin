@@ -14,6 +14,6 @@ data class AssetState(val data: String,
                    override val linearId: UniqueIdentifier = UniqueIdentifier()) : LinearState, OwnableState {
 
     override fun withNewOwner(newOwner: AbstractParty): CommandAndState {
-        return CommandAndState(AssetContract.Commands.Transfer(), this.copy(owner = newOwner))
+        return CommandAndState(AssetContract.Commands.Transfer(), copy(owner = newOwner, participants = listOf(newOwner)))
     }
 }
