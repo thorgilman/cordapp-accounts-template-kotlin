@@ -60,3 +60,10 @@ task integrationTest(type: Test, dependsOn: []) {
     testClassesDirs = sourceSets.integrationTest.output.classesDirs
     classpath = sourceSets.integrationTest.runtimeClasspath
 }
+
+// TODO: Why is this necessary?
+compileKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xnormalize-constructor-calls=enable"]
+    }
+}
